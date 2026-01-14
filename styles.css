@@ -1,69 +1,125 @@
-/* styles.css (bold, minimalist, dark + gradient vibe — flexbox layout) */
+/* styles.css — complete (bold hero, light sections, proper typography, flexbox layout) */
 
+/* ===== Design tokens ===== */
 :root {
-  --bg: #070a12;
-  --text: #f4f6ff;
-  --muted: rgba(244, 246, 255, 0.72);
-  --line: rgba(244, 246, 255, 0.14);
-  --soft: rgba(244, 246, 255, 0.06);
+  --bg-dark: #070a12;
+  --bg-light: #f6f7fb;
+  --bg-white: #ffffff;
 
-  --accent: #7c3aed; /* purple */
-  --accent2: #06b6d4; /* cyan */
+  --text-dark: #070a12;
+  --text-light: #f4f6ff;
+
+  --muted-dark: rgba(7, 10, 18, 0.72);
+  --muted-light: rgba(244, 246, 255, 0.74);
+
+  --line-dark: rgba(7, 10, 18, 0.12);
+  --line-light: rgba(244, 246, 255, 0.14);
+
+  --accent: #7c3aed;
+  --accent2: #06b6d4;
 
   --radius: 18px;
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 
   --grad-hero: radial-gradient(
-      900px 500px at 20% 0%,
-      rgba(124, 58, 237, 0.45),
+      900px 520px at 14% 8%,
+      rgba(124, 58, 237, 0.48),
       transparent 60%
     ),
     radial-gradient(
-      700px 420px at 90% 20%,
-      rgba(6, 182, 212, 0.35),
-      transparent 55%
-    ),
-    linear-gradient(180deg, rgba(244, 246, 255, 0.06), transparent 60%);
+      760px 460px at 92% 18%,
+      rgba(6, 182, 212, 0.38),
+      transparent 58%
+    );
 }
 
+/* ===== Reset / base ===== */
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
+  background: var(--bg-dark);
+  color: var(--text-light);
   line-height: 1.5;
 }
 
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
 a {
-  color: var(--text);
+  color: inherit;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
 
+/* ===== Typography (this fixes the “squashy” vibe) ===== */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 12px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0 0 14px; /* consistent vertical rhythm */
+  max-width: 70ch; /* stops paragraphs spanning too wide on big screens */
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted-light);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+}
+
+/* ===== Layout containers ===== */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
+/* Make only the hero feel more full-width */
+.hero .container {
+  max-width: 1280px; /* increase to 1360px if you want even more space */
+}
+
 /* ===== Header ===== */
 .site-header {
   position: sticky;
   top: 0;
-  background: rgba(7, 10, 18, 0.75);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
   z-index: 10;
+  background: rgba(7, 10, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-light);
 }
 
 .header-inner {
@@ -83,12 +139,12 @@ a:hover {
 .brand__name {
   font-weight: 900;
   letter-spacing: 0.2px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .brand__tag {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--muted-light);
 }
 
 .nav {
@@ -100,11 +156,12 @@ a:hover {
 .nav a {
   font-weight: 800;
   font-size: 14px;
-  color: var(--text);
-  opacity: 0.88;
+  opacity: 0.9;
 }
+
 .nav a:hover {
   opacity: 1;
+  text-decoration: none;
 }
 
 /* ===== Buttons ===== */
@@ -117,8 +174,9 @@ a:hover {
   font-weight: 900;
   border: 1px solid transparent;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
-  color: #070a12;
+  color: var(--text-dark);
   box-shadow: 0 10px 26px rgba(124, 58, 237, 0.22);
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -128,8 +186,8 @@ a:hover {
 
 .btn--outline {
   background: transparent;
-  color: var(--text);
-  border-color: var(--line);
+  border: 1px solid var(--line-light);
+  color: var(--text-light);
   box-shadow: none;
 }
 
@@ -140,43 +198,46 @@ a:hover {
 .btn--small {
   padding: 9px 12px;
   font-size: 14px;
-  font-weight: 900;
 }
 
 .btn--full {
   width: 100%;
 }
 
-/* ===== Hero ===== */
-.hero {
-  padding: 64px 0 36px;
-  background: var(--grad-hero);
-  border-bottom: 1px solid var(--line);
+/* ===== HERO ===== */
+.hero--full {
+  min-height: calc(100vh - 64px); /* approx header height */
+  display: flex;
+  align-items: center;
+  padding: 80px 0 64px;
+  background: var(--grad-hero), var(--bg-dark);
 }
 
 .hero-inner {
   display: flex;
-  gap: 26px;
-  align-items: flex-start;
+  align-items: center; /* center vertical alignment */
+  justify-content: space-between;
+  gap: 56px; /* breathing room */
 }
 
 .hero-copy {
-  flex: 1.25;
+  flex: 1 1 720px;
+  max-width: 720px;
 }
 
 .eyebrow {
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   font-size: 12px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--muted-light);
 }
 
 .hero h1 {
-  margin: 0 0 12px;
-  font-size: clamp(34px, 4vw, 58px);
+  margin: 0 0 16px;
+  font-size: clamp(44px, 5vw, 72px);
   line-height: 1.02;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.04em;
 }
 
 .accent {
@@ -187,9 +248,9 @@ a:hover {
 }
 
 .lead {
-  margin: 0 0 22px;
-  color: var(--muted);
+  margin: 0 0 24px;
   font-size: 17px;
+  color: var(--muted-light);
   max-width: 62ch;
 }
 
@@ -197,156 +258,154 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 14px;
+  margin: 0 0 16px;
 }
 
+/* trust bullets as a list */
 .trust-bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  list-style: disc;
+  padding-left: 18px; /* gives actual bullet indent */
+  color: var(--muted-light);
 }
 
 .trust-bullets li {
-  font-size: 13px;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  background: rgba(244, 246, 255, 0.04);
-  padding: 8px 10px;
-  border-radius: 999px;
+  margin: 4px 0;
 }
 
-/* ===== Cards / Modules ===== */
-.hero-card,
-.tile,
-.panel,
-.contact-card {
-  background: rgba(244, 246, 255, 0.04);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
+/* ===== Hero card ===== */
 .hero-card {
-  flex: 0.75;
-  padding: 18px;
+  flex: 0 0 460px;
+  max-width: 460px;
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-light);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .card-title {
-  margin: 0 0 6px;
-  font-size: 18px;
-  letter-spacing: -0.2px;
+  font-size: 22px;
+  margin: 0 0 10px;
 }
 
 .card-sub {
-  margin: 0 0 14px;
-  font-size: 14px;
-  color: var(--muted);
+  margin: 0 0 16px;
+  color: var(--muted-light);
 }
 
 .card-note {
-  font-size: 13px;
-  color: var(--muted);
   margin: 10px 0 0;
-}
-
-.divider {
-  height: 1px;
-  background: var(--line);
-  margin: 14px 0;
-  opacity: 0.7;
-}
-
-.tile,
-.contact-card {
-  transition: transform 160ms ease, border-color 160ms ease,
-    background 160ms ease;
-}
-
-.tile:hover,
-.hero-card:hover,
-.contact-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(244, 246, 255, 0.22);
+  color: var(--muted-light);
+  font-size: 13px;
 }
 
 /* ===== Sections ===== */
 .section {
-  padding: 48px 0;
+  padding: 84px 0;
 }
 
-.section--muted {
-  background: rgba(244, 246, 255, 0.02);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.section--white {
+  background: var(--bg-white);
+  color: var(--text-dark);
+}
+
+.section--light {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Section headings + paragraph colour on light backgrounds */
+.section--white p,
+.section--light p {
+  color: var(--muted-dark);
 }
 
 .section-head {
-  margin-bottom: 18px;
+  margin: 0 0 24px;
 }
 
 .section-head h2 {
-  margin: 0 0 6px;
-  font-size: 24px;
-  letter-spacing: -0.4px;
-}
-
-.section-head p {
-  margin: 0;
-  color: var(--muted);
-}
-
-/* ===== Services Tiles (Flex) ===== */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.tile {
-  flex: 1 1 calc(33.333% - 14px);
-  padding: 16px;
-}
-
-.tile h3 {
-  margin: 0 0 6px;
-  font-size: 16px;
-  letter-spacing: -0.2px;
-}
-
-.tile p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
+  font-size: 28px;
+  margin: 0 0 10px;
 }
 
 .section-cta {
-  margin-top: 16px;
+  margin-top: 18px;
+}
+
+/* On light sections, outline buttons should use dark borders */
+.section--white .btn--outline,
+.section--light .btn--outline {
+  border-color: var(--line-dark);
+  color: var(--text-dark);
+}
+
+.section--white .btn--outline:hover,
+.section--light .btn--outline:hover {
+  background: rgba(7, 10, 18, 0.04);
+}
+
+/* ===== Tiles (services cards) ===== */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tile {
+  flex: 1 1 calc(33.333% - 16px);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--line-dark);
+  background: var(--bg-white);
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.tile h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.tile p {
+  margin-bottom: 0;
+  color: var(--muted-dark);
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(7, 10, 18, 0.12);
+  border-color: rgba(7, 10, 18, 0.18);
 }
 
 /* ===== Steps ===== */
 .steps {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-left: 18px;
-  margin: 0;
+  gap: 14px;
+  padding: 0;
+}
+
+.steps li {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 16px;
 }
 
 .steps h3 {
-  margin: 0 0 4px;
-  font-size: 15px;
-  letter-spacing: -0.1px;
+  font-size: 16px;
+  margin: 0 0 6px;
 }
 
 .steps p {
   margin: 0;
-  font-size: 14px;
-  color: var(--muted);
+  color: var(--muted-dark);
 }
 
-/* ===== Areas ===== */
+/* ===== Chips ===== */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -354,16 +413,16 @@ a:hover {
 }
 
 .chip {
-  border: 1px solid var(--line);
-  background: rgba(244, 246, 255, 0.03);
-  padding: 10px 12px;
+  border: 1px solid var(--line-dark);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  padding: 10px 14px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 850;
-  color: var(--text);
 }
 
-/* ===== Two Column ===== */
+/* ===== Two column (if you add later) ===== */
 .two-col {
   display: flex;
   gap: 18px;
@@ -375,46 +434,36 @@ a:hover {
 }
 
 .panel {
-  padding: 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 18px;
 }
 
-.checklist {
-  margin: 10px 0 0;
-  padding-left: 18px;
-}
-
-.checklist li {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 6px 0;
-}
-
-/* ===== Contact ===== */
+/* ===== Contact cards (if you re-add later) ===== */
 .contact-grid {
   display: flex;
-  gap: 14px;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .contact-card {
-  flex: 1 1 calc(33.333% - 14px);
-  padding: 16px;
-}
-
-.contact-card h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
-  letter-spacing: -0.2px;
+  flex: 1 1 calc(33.333% - 16px);
+  background: var(--bg-white);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  padding: 18px;
 }
 
 .contact-card p {
-  margin: 0 0 6px;
+  margin-bottom: 8px;
 }
 
 /* ===== Footer ===== */
 .site-footer {
-  border-top: 1px solid var(--line);
-  padding: 22px 0;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--line-light);
+  padding: 32px 0;
 }
 
 .footer-inner {
@@ -424,20 +473,25 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.small {
-  font-size: 13px;
-  color: var(--muted);
-}
-
 /* ===== Responsive ===== */
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .hero-inner {
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  .tile,
+  .hero-card {
+    flex: 1 1 auto;
+    max-width: 520px;
+    width: 100%;
+  }
+
+  .tile {
+    flex: 1 1 calc(50% - 16px);
+  }
+
   .contact-card {
-    flex: 1 1 calc(50% - 14px);
+    flex: 1 1 calc(50% - 16px);
   }
 
   .two-col {
@@ -445,7 +499,7 @@ a:hover {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
   .nav a {
     display: none;
   }
@@ -453,5 +507,13 @@ a:hover {
   .tile,
   .contact-card {
     flex: 1 1 100%;
+  }
+
+  .hero--full {
+    padding: 72px 0 56px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 10vw, 54px);
   }
 }
