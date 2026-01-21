@@ -10,7 +10,7 @@
   --text-light: #f4f6ff;
 
   --muted-dark: rgba(7, 10, 18, 0.72);
-  --muted-light: rgba(244, 246, 255, 0.74);
+  --muted-light: rgba(134, 134, 134, 0.912);
 
   --line-dark: rgba(7, 10, 18, 0.12);
   --line-light: rgba(244, 246, 255, 0.14);
@@ -21,10 +21,11 @@
   --radius: 18px;
   --shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 
-  --grad-hero: radial-gradient(
+  --grad-hero:
+    radial-gradient(
       900px 520px at 14% 8%,
-      rgba(124, 58, 237, 0.48),
-      transparent 60%
+      rgba(73, 58, 237, 0.48),
+      transparent 30%
     ),
     radial-gradient(
       760px 460px at 92% 18%,
@@ -43,9 +44,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+svg path {
+  fill: red;
+}
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.5;
@@ -53,6 +63,7 @@ body {
 
 img,
 svg {
+  margin: 30px 0;
   max-width: 100%;
   display: block;
 }
@@ -76,9 +87,24 @@ h4 {
   letter-spacing: -0.02em;
 }
 
+h1 {
+  font-size: 50px;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: black;
+}
+
 p {
   margin: 0 0 14px; /* consistent vertical rhythm */
   max-width: 70ch; /* stops paragraphs spanning too wide on big screens */
+  color: rgb(177, 177, 177);
 }
 
 .small {
@@ -105,6 +131,10 @@ li {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+section {
+  padding: 50px 100px;
 }
 
 /* Make only the hero feel more full-width */
@@ -206,11 +236,21 @@ li {
 
 /* ===== HERO ===== */
 .hero--full {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(32, 14, 105, 0.5)),
+    url("images/building.jpg");
+
+  /* Set background properties for proper display */
+  background-size: cover; /* Makes the image cover the entire container */
+  background-position: center; /* Centers the image within the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+
   min-height: calc(100vh - 64px); /* approx header height */
   display: flex;
   align-items: center;
-  padding: 80px 0 64px;
-  background: var(--grad-hero), var(--bg-dark);
+  background-size: cover;
+  /* Optional: Ensure the html and body elements fill the full height */
+  height: 100%;
 }
 
 .hero-inner {
@@ -259,17 +299,6 @@ li {
   flex-wrap: wrap;
   gap: 12px;
   margin: 0 0 16px;
-}
-
-/* trust bullets as a list */
-.trust-bullets {
-  list-style: disc;
-  padding-left: 18px; /* gives actual bullet indent */
-  color: var(--muted-light);
-}
-
-.trust-bullets li {
-  margin: 4px 0;
 }
 
 /* ===== Hero card ===== */
@@ -359,7 +388,9 @@ li {
   padding: 18px;
   border: 1px solid var(--line-dark);
   background: var(--bg-white);
-  transition: transform 160ms ease, box-shadow 160ms ease,
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
     border-color 160ms ease;
 }
 
@@ -370,7 +401,8 @@ li {
 
 .tile p {
   margin-bottom: 0;
-  color: var(--muted-dark);
+  color: var(--muted-light);
+  font-weight: 200;
 }
 
 .tile:hover {
@@ -474,7 +506,7 @@ li {
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 980px) {
+@media (max-width: 768px) {
   .hero-inner {
     flex-direction: column;
     align-items: flex-start;
@@ -497,23 +529,8 @@ li {
   .two-col {
     flex-direction: column;
   }
-}
 
-@media (max-width: 560px) {
-  .nav a {
-    display: none;
-  }
-
-  .tile,
-  .contact-card {
-    flex: 1 1 100%;
-  }
-
-  .hero--full {
-    padding: 72px 0 56px;
-  }
-
-  .hero h1 {
-    font-size: clamp(38px, 10vw, 54px);
+  section {
+    padding: 50px;
   }
 }
