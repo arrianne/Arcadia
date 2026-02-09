@@ -430,6 +430,11 @@ section {
   color: var(--text-dark);
 }
 
+.section--dark {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
 /* Section headings + paragraph colour on light backgrounds */
 .section--white p,
 .section--light p {
@@ -577,6 +582,113 @@ section {
 .steps p {
   margin: 0;
   color: var(--muted-dark);
+}
+
+/* ===== How it works (process) ===== */
+.how-it-works .container {
+  max-width: 1200px;
+}
+
+.how-it-works__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px 80px;
+  align-items: start;
+}
+
+.how-it-works__heading {
+  position: sticky;
+  top: 120px;
+}
+
+.how-it-works__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.how-it-works__line {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+}
+
+.how-it-works__title {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-light);
+}
+
+.how-it-works__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-it-works__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.how-it-works__step:last-child {
+  border-bottom: none;
+}
+
+.how-it-works__num {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.how-it-works__content h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: none;
+}
+
+.how-it-works__content p {
+  margin: 0;
+  color: var(--muted-light);
+  font-size: 15px;
+  max-width: 48ch;
+}
+
+@media (max-width: 900px) {
+  .how-it-works__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .how-it-works__heading {
+    position: static;
+  }
+
+  .how-it-works__step {
+    gap: 16px 20px;
+    padding: 20px 0;
+  }
 }
 
 /* ===== Chips ===== */
