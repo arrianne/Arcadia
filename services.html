@@ -32,9 +32,24 @@
           <img src="images/arcadialogo1.svg" alt="Arcadia Building Reports" class="brand__img" />
         </a>
 
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
         <nav class="nav nav--right">
           <a class="btn btn--small btn--outline" href="contact.html">Contact</a>
         </nav>
+
+        <div class="nav-overlay" id="nav-overlay">
+          <nav class="nav nav--mobile">
+            <a href="services.html" aria-current="page">Services</a>
+            <a href="areas.html">Areas</a>
+            <a href="about.html">About</a>
+            <a class="btn btn--outline" href="contact.html">Contact</a>
+          </nav>
+        </div>
       </div>
     </header>
 
