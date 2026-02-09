@@ -44,9 +44,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-svg path {
-  fill: red;
-}
 body {
   margin: 0;
   font-family:
@@ -61,13 +58,6 @@ body {
   line-height: 1.5;
 }
 
-img,
-svg {
-  margin: 30px 0;
-  max-width: 100%;
-  display: block;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -77,7 +67,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ===== Typography (this fixes the “squashy” vibe) ===== */
 h1,
 h2,
 h3,
@@ -88,7 +77,7 @@ h4 {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
 }
 
 h3 {
@@ -147,23 +136,75 @@ section {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(7, 10, 18, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line-light);
+  background: transparent !important; /* force transparent so hero shows through */
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* When scrolled, allow the dark overlay (override the !important above via specificity) */
+.site-header.is-scrolled {
+  background: rgba(0, 0, 0, 1) !important;
+}
+
+/* Match horizontal spacing to section content (section uses 50px 100px) */
+.site-header .container {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--line-light);
 }
 
 .header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+  max-width: 100%;
+  transition: max-width 0.35s ease;
+}
+
+.site-header.is-scrolled .header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.nav--left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
+  gap: 18px;
+  justify-self: start;
+}
+
+.nav--right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-self: end;
 }
 
 .brand {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  justify-self: center;
+  text-align: center;
+}
+
+.brand--logo {
+  line-height: 0;
+}
+
+.brand__img {
+  display: block;
+  height: 20px;
+  width: auto;
+  object-fit: contain;
 }
 
 .brand__name {
@@ -175,12 +216,6 @@ section {
 .brand__tag {
   font-size: 13px;
   color: var(--muted-light);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 18px;
 }
 
 .nav a {
@@ -235,22 +270,26 @@ section {
 }
 
 /* ===== HERO ===== */
+
+.hero {
+  padding: 90px 0 40px;
+}
+
+/* Pull hero behind the header so the hero background shows through the transparent nav */
 .hero--full {
+  margin-top: -64px;
+  padding-top: 154px; /* 64px (header) + 90px (original top padding) */
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 1), rgba(32, 14, 105, 0.5)),
     url("images/building.jpg");
-
-  /* Set background properties for proper display */
-  background-size: cover; /* Makes the image cover the entire container */
-  background-position: center; /* Centers the image within the container */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-
-  min-height: calc(100vh - 64px); /* approx header height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: calc(
+    100vh - 0px
+  ); /* full viewport; we added padding for header */
   display: flex;
   align-items: center;
-  background-size: cover;
-  /* Optional: Ensure the html and body elements fill the full height */
-  height: 100%;
 }
 
 .hero-inner {
@@ -330,6 +369,7 @@ section {
 }
 
 /* ===== Sections ===== */
+
 .section {
   padding: 84px 0;
 }
@@ -386,6 +426,7 @@ section {
   flex: 1 1 calc(33.333% - 16px);
   border-radius: var(--radius);
   padding: 18px;
+  cursor: pointer;
   border: 1px solid var(--line-dark);
   background: var(--bg-white);
   transition:
@@ -408,24 +449,79 @@ section {
 .tile:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(7, 10, 18, 0.12);
-  border-color: rgba(7, 10, 18, 0.18);
+}
+
+.tile::after {
+  content: "↓";
+  display: block;
+  font-size: 14px;
+  opacity: 0.4;
+  margin-top: 6px;
 }
 
 /* ===== Steps ===== */
-.steps {
+
+/* =====================================================
+   PROCESS SECTION – FULL BLEED STEPS (OPTION A)
+   ===================================================== */
+
+/* -----------------------------------------------------
+   Break the steps list out of the container
+   ----------------------------------------------------- */
+
+.section--light .steps {
   list-style: none;
+  padding: 0;
+  margin: 0;
+
+  /* full-bleed breakout */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 0;
 }
 
-.steps li {
+/* -----------------------------------------------------
+   Each li = full-width lane aligned to screen right
+   ----------------------------------------------------- */
+
+.section--light .steps li {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* card hugs right edge */
+}
+
+/* -----------------------------------------------------
+   Card styling (the visible box)
+   ----------------------------------------------------- */
+
+.section--light .steps li > * {
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid var(--line-dark);
   border-radius: var(--radius);
   padding: 16px;
+
+  width: 100%;
+  max-width: 720px; /* longest card */
 }
+
+/* stepped card lengths */
+.section--light .steps li:nth-child(2) > * {
+  max-width: 640px;
+}
+.section--light .steps li:nth-child(3) > * {
+  max-width: 560px;
+}
+.section--light .steps li:nth-child(4) > * {
+  max-width: 480px;
+}
+
+/* -----------------------------------------------------
+   Typography inside steps
+   ----------------------------------------------------- */
 
 .steps h3 {
   font-size: 16px;
@@ -507,6 +603,24 @@ section {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+  .site-header .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px;
+  }
+
+  .brand__img {
+    height: 16px;
+  }
+
+  .nav--left a:not(.btn) {
+    font-size: 13px;
+  }
+
   .hero-inner {
     flex-direction: column;
     align-items: flex-start;

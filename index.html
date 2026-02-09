@@ -21,17 +21,19 @@
 
   <body>
     <!-- ===== Header ===== -->
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="container header-inner">
-        <a class="brand" href="index.html">
-          <span class="brand__name">Arcadia</span>
-          <span class="brand__tag">Building Reports</span>
-        </a>
-
-        <nav class="nav">
+        <nav class="nav nav--left">
           <a href="services.html">Services</a>
           <a href="areas.html">Areas</a>
           <a href="about.html">About</a>
+        </nav>
+
+        <a class="brand brand--logo" href="index.html">
+          <img src="images/arcadialogo1.svg" alt="Arcadia Building Reports" class="brand__img" />
+        </a>
+
+        <nav class="nav nav--right">
           <a class="btn btn--small btn--outline" href="contact.html">Contact</a>
         </nav>
       </div>
@@ -152,26 +154,34 @@
       <section class="section section--light">
         <div class="container">
           <div class="section-head">
-            <h2>How it works</h2>
+            <h1><span class="accent">How it works</span></h1>
             <p>Simple process, clear communication.</p>
           </div>
 
           <ol class="steps">
             <li>
-              <h3>Contact us</h3>
-              <p>Tell us what you need inspected.</p>
+              <div class="step-card">
+                <h3>Contact us</h3>
+                <p>Tell us what you need inspected.</p>
+              </div>
             </li>
             <li>
-              <h3>Site inspection</h3>
-              <p>We attend site and document findings.</p>
+              <div class="step-card">
+                <h3>Site inspection</h3>
+                <p>We attend site and document findings.</p>
+              </div>
             </li>
             <li>
-              <h3>Written report</h3>
-              <p>You receive a clear report with photos.</p>
+              <div class="step-card">
+                <h3>Written report</h3>
+                <p>You receive a clear report with photos.</p>
+              </div>
             </li>
             <li>
-              <h3>Next steps</h3>
-              <p>Optional follow-up to discuss priorities.</p>
+              <div class="step-card">
+                <h3>Next steps</h3>
+                <p>Optional follow-up to discuss priorities.</p>
+              </div>
             </li>
           </ol>
         </div>
@@ -208,9 +218,6 @@
         </p>
       </div>
     </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
