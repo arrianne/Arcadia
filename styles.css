@@ -32,6 +32,9 @@
       rgba(6, 182, 212, 0.38),
       transparent 58%
     );
+
+  --gutter-x: 100px;
+  --container-max: 1200px;
 }
 
 /* ===== Reset / base ===== */
@@ -117,18 +120,13 @@ li {
 
 /* ===== Layout containers ===== */
 .container {
-  max-width: 1100px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 var(--gutter-x);
 }
 
 section {
-  padding: 50px 100px;
-}
-
-/* Make only the hero feel more full-width */
-.hero .container {
-  max-width: 1280px; /* increase to 1360px if you want even more space */
+  padding: 50px 0;
 }
 
 /* ===== Header ===== */
@@ -149,10 +147,10 @@ section {
   background: rgba(0, 0, 0, 1) !important;
 }
 
-/* Match horizontal spacing to section content (section uses 50px 100px) */
+/* Header uses same gutter as sections for alignment */
 .site-header .container {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: var(--gutter-x);
+  padding-right: var(--gutter-x);
 }
 
 .site-header.is-scrolled {
@@ -255,7 +253,9 @@ section {
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .site-header.is-nav-open .nav-toggle__bar:nth-child(1) {
@@ -677,11 +677,7 @@ section {
   color: var(--muted-dark);
 }
 
-/* ===== Shared layout for Services + How it works ===== */
-.services-section .container,
-.how-it-works .container {
-  max-width: 1200px;
-}
+/* Services and How it works use same container as all sections */
 
 /* ===== How it works (process) ===== */
 
@@ -909,6 +905,47 @@ section {
   font-weight: 850;
 }
 
+/* ===== Coverage map (areas page) ===== */
+.section--coverage {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  padding: 84px 0;
+  background: transparent;
+}
+
+.section--coverage .coverage-map-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #000;
+  background-image: url("images/coverage-map.png");
+  background-size: 85% auto;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.section--coverage .coverage-section__content {
+  position: relative;
+  z-index: 1;
+}
+
+.coverage-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  max-width: 640px;
+}
+
+.coverage-card .section-head h2 {
+  color: var(--text-dark);
+}
+
+.coverage-card .section-head p {
+  color: var(--muted-dark);
+}
+
 /* ===== Two column (if you add later) ===== */
 .two-col {
   display: flex;
@@ -961,10 +998,110 @@ section {
 }
 
 /* ===== Responsive ===== */
+
+/* ===== Medium devices (tablets, 769px - 1024px) ===== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  :root {
+    --gutter-x: 48px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .hero {
+    padding: 70px 0 30px;
+  }
+
+  .hero--full {
+    padding-top: 134px;
+  }
+
+  .hero-inner {
+    gap: 40px;
+  }
+
+  .hero-copy {
+    flex: 1 1 600px;
+    max-width: 600px;
+  }
+
+  .hero-card {
+    flex: 0 0 380px;
+    max-width: 380px;
+    padding: 22px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .section-head {
+    margin: 0 0 20px;
+  }
+
+  .section-head h2 {
+    font-size: 26px;
+  }
+
+  .services-section__inner,
+  .how-it-works__inner {
+    gap: 48px 60px;
+  }
+
+  .services-section__grid.grid {
+    gap: 18px;
+  }
+
+  .grid {
+    gap: 14px;
+  }
+
+  .tile {
+    flex: 1 1 calc(33.333% - 14px);
+    padding: 16px;
+  }
+
+  .cta-row {
+    gap: 10px;
+  }
+
+  .team-banner {
+    padding: 64px 0;
+    min-height: 380px;
+  }
+
+  .team-banner__inner {
+    gap: 32px 48px;
+  }
+
+  .how-it-works__step {
+    gap: 20px 28px;
+    padding: 24px 0;
+  }
+
+  .chips {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ===== Mobile devices (up to 768px) ===== */
 @media (max-width: 768px) {
-  .site-header .container {
-    padding-left: 20px;
-    padding-right: 20px;
+  :root {
+    --gutter-x: 24px;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  .section {
+    padding: 48px 0;
   }
 
   .header-inner {
@@ -972,6 +1109,8 @@ section {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    gap: 12px;
+    padding: 12px 0;
   }
 
   /* Logo moves left on mobile */
@@ -981,6 +1120,14 @@ section {
 
   .brand__img {
     height: 16px;
+  }
+
+  .brand__name {
+    font-size: 14px;
+  }
+
+  .brand__tag {
+    font-size: 11px;
   }
 
   /* Hide desktop nav, show burger */
@@ -1006,7 +1153,9 @@ section {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
   }
 
   .site-header.is-nav-open .nav-toggle {
@@ -1045,30 +1194,277 @@ section {
     margin-top: 12px;
   }
 
+  /* Hero adjustments */
+  .hero {
+    padding: 60px 0 30px;
+  }
+
+  .hero--full {
+    margin-top: -64px;
+    padding-top: 124px;
+    min-height: calc(100vh - 0px);
+  }
+
   .hero-inner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 32px;
+  }
+
+  .hero-copy {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 8vw, 48px);
+    margin: 0 0 14px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    margin: 0 0 14px;
+  }
+
+  .lead {
+    font-size: 16px;
+    margin: 0 0 20px;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 14px;
+  }
+
+  .btn {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .btn--small {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 
   .hero-card {
     flex: 1 1 auto;
-    max-width: 520px;
+    max-width: 100%;
     width: 100%;
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 20px;
+    margin: 0 0 8px;
+  }
+
+  .card-sub {
+    margin: 0 0 14px;
+    font-size: 15px;
+  }
+
+  .card-note {
+    font-size: 12px;
+    margin: 8px 0 0;
+  }
+
+  /* Section adjustments */
+  .section-head {
+    margin: 0 0 18px;
+  }
+
+  .section-head h2 {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+
+  .section-head p {
+    font-size: 15px;
+  }
+
+  .section-cta {
+    margin-top: 16px;
+  }
+
+  /* Services section */
+  .services-section__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .services-section__heading {
+    position: static;
+  }
+
+  .services-section__title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .services-section__grid.grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .services-tile {
+    padding: 16px;
+  }
+
+  .services-tile h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .services-tile p {
+    font-size: 14px;
+  }
+
+  /* How it works */
+  .how-it-works__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .how-it-works__heading {
+    position: static;
+  }
+
+  .how-it-works__title {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+
+  .how-it-works__step {
+    gap: 14px 18px;
+    padding: 18px 0;
+  }
+
+  .how-it-works__num {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .how-it-works__content h3 {
+    font-size: 18px;
+    margin: 0 0 6px;
+  }
+
+  .how-it-works__content p {
+    font-size: 14px;
+  }
+
+  /* Team banner */
+  .team-banner {
+    padding: 48px 0;
+    min-height: 320px;
+  }
+
+  .team-banner__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .team-banner__title {
+    font-size: clamp(26px, 7vw, 36px);
+    margin: 0 0 12px;
+  }
+
+  .team-banner__desc {
+    font-size: 16px;
+  }
+
+  .team-banner__cta {
+    align-self: start;
+  }
+
+  /* Tiles and grids */
+  .grid {
+    gap: 12px;
   }
 
   .tile {
-    flex: 1 1 calc(50% - 16px);
+    flex: 1 1 100%;
+    padding: 16px;
+  }
+
+  .tile h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .tile p {
+    font-size: 14px;
   }
 
   .contact-card {
-    flex: 1 1 calc(50% - 16px);
+    flex: 1 1 100%;
+    padding: 16px;
   }
 
   .two-col {
     flex-direction: column;
+    gap: 16px;
   }
 
-  section {
-    padding: 50px;
+  .panel {
+    padding: 16px;
+  }
+
+  /* Chips */
+  .chips {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 24px 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Typography adjustments */
+  h1 {
+    font-size: clamp(36px, 8vw, 48px);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 15px;
+    margin: 0 0 12px;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+  /* Steps section */
+  .section--light .steps {
+    gap: 12px;
+  }
+
+  .section--light .steps li > * {
+    padding: 14px;
+  }
+
+  .steps h3 {
+    font-size: 15px;
+    margin: 0 0 4px;
+  }
+
+  .steps p {
+    font-size: 14px;
   }
 }
