@@ -874,6 +874,10 @@ section {
   color: var(--text-dark);
 }
 
+.service-detail p {
+  color: var(--muted-dark);
+}
+
 .service-detail--white {
   background: var(--bg-white);
 }
@@ -973,7 +977,12 @@ section {
   background: var(--bg-white);
   border: 1px solid var(--line-dark);
   border-radius: var(--radius);
-  padding: 20px 24px;
+  padding: 22px 26px 22px 36px;
+}
+
+/* Center the panel vertically in area detail sections (desktop) */
+.service-detail .two-col {
+  align-items: center;
 }
 
 .service-detail--white .service-detail__panel {
@@ -1015,6 +1024,11 @@ section {
   .service-detail__step {
     gap: 16px 20px;
     padding: 20px 0;
+  }
+
+  /* When stacked, keep normal horizontal alignment */
+  .service-detail .two-col {
+    align-items: stretch;
   }
 }
 
