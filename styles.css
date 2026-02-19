@@ -337,6 +337,7 @@ section {
 
 /* Pull hero behind the header so the hero background shows through the transparent nav */
 .hero--full {
+  position: relative;
   margin-top: -84px;
   padding-top: 174px; /* 84px (header) + 90px (original top padding) */
   background-image:
@@ -350,6 +351,98 @@ section {
   ); /* full viewport; we added padding for header */
   display: flex;
   align-items: center;
+}
+
+/* Hero intro: paths draw in (stroke animation), then whole fades out */
+.hero-intro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-intro__svg {
+  width: min(280px, 28vw);
+  height: auto;
+}
+
+/* House: path draws in over first 20%, holds, then fades out */
+.hero-intro__house {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-intro-draw-house 4.2s ease forwards;
+}
+
+@keyframes hero-intro-draw-house {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  20% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  58% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* Tick: path draws in after the house (20%–38%), then fades out */
+.hero-intro__tick {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-intro-draw-tick 4.2s ease forwards;
+}
+
+@keyframes hero-intro-draw-tick {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  20% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+  38% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  58% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* Hero copy fades in after the whole intro image has faded out */
+.hero--full .hero-copy {
+  opacity: 0;
+  animation: hero-copy-show 0.8s ease 3.6s forwards;
+}
+
+@keyframes hero-copy-show {
+  to {
+    opacity: 1;
+  }
 }
 
 /* Left-align hero content (like before aside was removed) */
