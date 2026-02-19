@@ -83,6 +83,14 @@
       </section>
 
       <!-- ===== CONTACT (two columns: info left, form right) ===== -->
+      <div class="container">
+      <div id="contact-message" class="contact-message contact-message--success" role="alert" hidden>
+        Thank you for your message. We'll be in touch shortly.
+      </div>
+      <div id="contact-error" class="contact-message contact-message--error" role="alert" hidden>
+        Something went wrong. Please try again or email us directly.
+      </div>
+      </div>
       <section class="contact-section">
         <div class="container contact-section__inner">
           <div class="contact-info">
@@ -110,7 +118,7 @@
             </div>
           </div>
 
-          <form class="contact-form" action="#" method="post" id="contact-form">
+          <form class="contact-form" action="contact.php" method="post" id="contact-form">
             <div class="contact-form__field">
               <label for="iam">I'm a/an</label>
               <select
@@ -226,5 +234,18 @@
       </div>
     </footer>
     <script src="main.js"></script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var success = document.getElementById('contact-message');
+        var error = document.getElementById('contact-error');
+        if (params.get('sent') === '1' && success) {
+          success.hidden = false;
+        }
+        if (params.get('error') === '1' && error) {
+          error.hidden = false;
+        }
+      })();
+    </script>
   </body>
 </html>

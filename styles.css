@@ -1213,6 +1213,26 @@ section {
   padding: 18px;
 }
 
+/* ===== Contact messages (success / error) ===== */
+.contact-message {
+  margin: 0 0 24px;
+  padding: 16px 24px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.contact-message--success {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid var(--accent2);
+  color: var(--text-dark);
+}
+
+.contact-message--error {
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid #dc2626;
+  color: var(--text-dark);
+}
+
 /* ===== Contact section (light bg, two columns: info left, form right) ===== */
 .contact-section {
   background: var(--bg-white);
