@@ -4,6 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const navOverlay = document.getElementById("nav-overlay");
   const scrollThreshold = 50;
 
+  // Hero intro: only animate on first visit to homepage this session
+  const hero = document.querySelector(".hero.hero--full");
+  const isHomepage =
+    window.location.pathname === "/" ||
+    window.location.pathname.endsWith("/index.html");
+  if (hero && isHomepage) {
+    if (sessionStorage.getItem("heroIntroSeen")) {
+      hero.classList.add("hero--skip-intro");
+    } else {
+      const introDuration = 3600 + 800; // copy delay + fade duration (ms)
+      window.setTimeout(() => {
+        sessionStorage.setItem("heroIntroSeen", "1");
+      }, introDuration);
+    }
+  }
+
   function handleScroll() {
     if (window.scrollY > scrollThreshold) {
       header.classList.add("is-scrolled");

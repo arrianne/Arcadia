@@ -325,10 +325,6 @@ section {
   font-size: 14px;
 }
 
-.btn--full {
-  width: 100%;
-}
-
 /* ===== HERO ===== */
 
 .hero {
@@ -443,6 +439,16 @@ section {
   to {
     opacity: 1;
   }
+}
+
+/* Skip intro when returning to homepage (sessionStorage has already seen it) */
+.hero--skip-intro .hero-intro {
+  display: none;
+}
+
+.hero--skip-intro .hero-copy {
+  opacity: 1;
+  animation: none;
 }
 
 /* Left-align hero content (like before aside was removed) */
@@ -588,34 +594,6 @@ section {
   margin: 0 0 16px;
 }
 
-/* ===== Hero card ===== */
-.hero-card {
-  flex: 0 0 460px;
-  max-width: 460px;
-  align-self: flex-start;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--line-light);
-  border-radius: var(--radius);
-  padding: 26px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.card-title {
-  font-size: 22px;
-  margin: 0 0 10px;
-}
-
-.card-sub {
-  margin: 0 0 16px;
-  color: var(--muted-light);
-}
-
-.card-note {
-  margin: 10px 0 0;
-  color: var(--muted-light);
-  font-size: 13px;
-}
-
 /* ===== Sections ===== */
 
 .section {
@@ -650,10 +628,6 @@ section {
 .section-head h2 {
   font-size: 28px;
   margin: 0 0 10px;
-}
-
-.section-cta {
-  margin-top: 18px;
 }
 
 /* On light sections, outline buttons should use dark borders */
@@ -804,82 +778,6 @@ section {
   opacity: 0.4;
   margin-top: 6px;
 }
-
-/* ===== Steps ===== */
-
-/* =====================================================
-   PROCESS SECTION – FULL BLEED STEPS (OPTION A)
-   ===================================================== */
-
-/* -----------------------------------------------------
-   Break the steps list out of the container
-   ----------------------------------------------------- */
-
-.section--light .steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  /* full-bleed breakout */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* -----------------------------------------------------
-   Each li = full-width lane aligned to screen right
-   ----------------------------------------------------- */
-
-.section--light .steps li {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end; /* card hugs right edge */
-}
-
-/* -----------------------------------------------------
-   Card styling (the visible box)
-   ----------------------------------------------------- */
-
-.section--light .steps li > * {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius);
-  padding: 16px;
-
-  width: 100%;
-  max-width: 720px; /* longest card */
-}
-
-/* stepped card lengths */
-.section--light .steps li:nth-child(2) > * {
-  max-width: 640px;
-}
-.section--light .steps li:nth-child(3) > * {
-  max-width: 560px;
-}
-.section--light .steps li:nth-child(4) > * {
-  max-width: 480px;
-}
-
-/* -----------------------------------------------------
-   Typography inside steps
-   ----------------------------------------------------- */
-
-.steps h3 {
-  font-size: 16px;
-  margin: 0 0 6px;
-}
-
-.steps p {
-  margin: 0;
-  color: var(--muted-dark);
-}
-
-/* Services and How it works use same container as all sections */
 
 /* ===== How it works (process) ===== */
 
@@ -1910,25 +1808,6 @@ section {
   color: var(--muted-dark);
 }
 
-/* ===== Contact cards (if you re-add later) ===== */
-.contact-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.contact-card {
-  flex: 1 1 calc(33.333% - 16px);
-  background: var(--bg-white);
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius);
-  padding: 18px;
-}
-
-.contact-card p {
-  margin-bottom: 8px;
-}
-
 /* ===== Footer ===== */
 .site-footer {
   background: var(--bg-dark);
@@ -1970,12 +1849,6 @@ section {
   .hero-copy {
     flex: 1 1 600px;
     max-width: 600px;
-  }
-
-  .hero-card {
-    flex: 0 0 380px;
-    max-width: 380px;
-    padding: 22px;
   }
 
   .section {
@@ -2215,28 +2088,6 @@ section {
     font-size: 13px;
   }
 
-  .hero-card {
-    flex: 1 1 auto;
-    max-width: 100%;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .card-title {
-    font-size: 20px;
-    margin: 0 0 8px;
-  }
-
-  .card-sub {
-    margin: 0 0 14px;
-    font-size: 15px;
-  }
-
-  .card-note {
-    font-size: 12px;
-    margin: 8px 0 0;
-  }
-
   /* Section adjustments */
   .section-head {
     margin: 0 0 18px;
@@ -2249,10 +2100,6 @@ section {
 
   .section-head p {
     font-size: 15px;
-  }
-
-  .section-cta {
-    margin-top: 16px;
   }
 
   /* Services section */
@@ -2390,11 +2237,6 @@ section {
     font-size: 14px;
   }
 
-  .contact-card {
-    flex: 1 1 100%;
-    padding: 16px;
-  }
-
   .two-col {
     flex-direction: column;
     gap: 16px;
@@ -2496,21 +2338,4 @@ section {
     font-size: 12px;
   }
 
-  /* Steps section */
-  .section--light .steps {
-    gap: 12px;
-  }
-
-  .section--light .steps li > * {
-    padding: 14px;
-  }
-
-  .steps h3 {
-    font-size: 15px;
-    margin: 0 0 4px;
-  }
-
-  .steps p {
-    font-size: 14px;
-  }
 }
