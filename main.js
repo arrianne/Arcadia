@@ -55,6 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // FAQ accordion: optional single-open behaviour (close others when one opens)
+  const accordion = document.querySelector("[data-accordion]");
+  if (accordion) {
+    const detailsList = accordion.querySelectorAll(".faq-details");
+    detailsList.forEach((details) => {
+      details.addEventListener("toggle", () => {
+        if (details.open) {
+          detailsList.forEach((d) => {
+            if (d !== details) d.open = false;
+          });
+        }
+      });
+    });
+  }
+
   // Testimonial carousel (homepage) — fade in/out
   const testimonialsSection = document.querySelector(".testimonials");
   if (testimonialsSection) {
