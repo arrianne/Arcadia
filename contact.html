@@ -54,6 +54,7 @@
         </button>
 
         <nav class="nav nav--right">
+          <a class="nav-phone" href="tel:+61438716601">0438 716 601</a>
           <a
             class="btn btn--small btn--outline"
             href="contact.html"
@@ -78,54 +79,105 @@
 
     <main>
       <!-- ===== PAGE INTRO ===== -->
-      <section class="hero">
-        <div class="container">
-          <p class="eyebrow">Get in touch</p>
+      <section class="hero hero--contact">
+        <div class="container hero__content">
           <h1><span class="accent">Contact</span></h1>
-          <p class="lead">
-            Tell us what you need — a call, a quote, or an inspection. We'll
-            respond promptly.
-          </p>
+
+          <a
+            href="#contact"
+            class="hero__scroll"
+            aria-label="Scroll to contact form"
+          >
+            <span class="hero__scroll-arrow"></span>
+          </a>
         </div>
       </section>
 
       <!-- ===== CONTACT (two columns: info left, form right) ===== -->
       <div class="container">
-      <div id="contact-message" class="contact-message contact-message--success" role="alert" hidden>
-        Thank you for your message. We'll be in touch shortly.
+        <div
+          id="contact-message"
+          class="contact-message contact-message--success"
+          role="alert"
+          hidden
+        >
+          Thank you for your message. We'll be in touch shortly.
+        </div>
+        <div
+          id="contact-error"
+          class="contact-message contact-message--error"
+          role="alert"
+          hidden
+        >
+          Something went wrong. Please try again or email us directly.
+        </div>
       </div>
-      <div id="contact-error" class="contact-message contact-message--error" role="alert" hidden>
-        Something went wrong. Please try again or email us directly.
-      </div>
-      </div>
-      <section class="contact-section">
+      <section id="contact" class="contact-section">
         <div class="container contact-section__inner">
           <div class="contact-info">
             <p class="contact-info__eyebrow">
               <span class="contact-info__line"></span>Get in touch
             </p>
-            <h2 class="contact-info__title">Let's get in touch</h2>
+            <h2 class="contact-info__title">Call, email, or fill our form.</h2>
             <p class="contact-info__desc">
-              Licensed, practical and focused on clear outcomes for strata
-              committees, property managers and owners.
+              The easiest way to reach us is to call. You'll likely speak with
+              Deb, who's happy to chat and answer questions about your building
+              report.
             </p>
             <div class="contact-info__details">
-              <a href="tel:+61700000000" class="contact-info__item">
+              <a href="tel:+61438716601" class="contact-info__item">
                 <span class="contact-info__icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
                 </span>
-                <span>07 0000 0000</span>
+                <span>0438 716 601</span>
               </a>
-              <a href="mailto:info@arcadiabuildingreports.com.au" class="contact-info__item">
+              <a
+                href="mailto:info@arcadiabuildingreports.com.au"
+                class="contact-info__item"
+              >
                 <span class="contact-info__icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
                 </span>
                 <span>info@arcadiabuildingreports.com.au</span>
               </a>
             </div>
           </div>
 
-          <form class="contact-form" action="contact.php" method="post" id="contact-form">
+          <form
+            class="contact-form"
+            action="contact.php"
+            method="post"
+            id="contact-form"
+          >
             <div class="contact-form__field">
               <label for="iam">I'm a/an</label>
               <select
@@ -151,7 +203,6 @@
               >
                 <option value="">Select...</option>
                 <option value="call">Call to discuss my building</option>
-                <option value="quote">Quote for an inspection</option>
                 <option value="report">Follow-up on a report</option>
                 <option value="other">Other</option>
               </select>
@@ -235,8 +286,7 @@
         <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
         <p class="small">
           <a href="services.html">Services</a> ·
-          <a href="areas.html">Areas</a> ·
-          <a href="faq.html">FAQs</a> ·
+          <a href="areas.html">Areas</a> · <a href="faq.html">FAQs</a> ·
           <a href="contact.html">Contact</a>
         </p>
       </div>
@@ -245,12 +295,12 @@
     <script>
       (function () {
         var params = new URLSearchParams(window.location.search);
-        var success = document.getElementById('contact-message');
-        var error = document.getElementById('contact-error');
-        if (params.get('sent') === '1' && success) {
+        var success = document.getElementById("contact-message");
+        var error = document.getElementById("contact-error");
+        if (params.get("sent") === "1" && success) {
           success.hidden = false;
         }
-        if (params.get('error') === '1' && error) {
+        if (params.get("error") === "1" && error) {
           error.hidden = false;
         }
       })();

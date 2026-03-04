@@ -168,7 +168,7 @@ section {
 }
 
 .site-header.is-scrolled .header-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -184,6 +184,11 @@ section {
   align-items: center;
   gap: 18px;
   justify-self: end;
+}
+
+.nav-phone {
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .brand {
@@ -466,7 +471,7 @@ section {
   margin-top: -84px;
   padding-top: 174px;
   padding-bottom: 80px;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -485,10 +490,9 @@ section {
   background-repeat: no-repeat;
 }
 
-/* Left-align hero content like Services page */
+/* Match Services: container full width so content aligns with sections below */
 .hero--about .container {
-  margin-left: var(--gutter-x);
-  margin-right: auto;
+  width: 100%;
 }
 
 .hero--about .hero__content {
@@ -507,14 +511,56 @@ section {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.hero__scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+/* Contact page hero – woman-on-phone image, same overlay as about */
+.hero--contact {
+  margin-top: -84px;
+  padding-top: 174px;
+  padding-bottom: 80px;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(7, 10, 18, 0.7) 0%,
+      rgba(7, 10, 18, 0.55) 50%,
+      rgba(7, 10, 18, 0.78) 100%
+    ),
+    url("images/woman-on-phone.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Match Services: container full width so content aligns with sections below */
+.hero--contact .container {
+  width: 100%;
+}
+
+.hero--contact .hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hero__scroll-text {
+  margin: 0 0 24px;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 22ch;
+}
+
+.hero__scroll {
+  display: inline-flex;
+  flex-direction: column;
   align-items: center;
+  margin-top: 8px;
+  margin-left: 10px;
   color: #ffffff;
   opacity: 0.9;
   text-decoration: none;
@@ -530,19 +576,20 @@ section {
 .hero__scroll-arrow {
   width: 28px;
   height: 28px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  border-image: linear-gradient(135deg, var(--accent), var(--accent2)) 0 1 1 0 / 0 2px 2px 0;
   transform: rotate(45deg);
-  margin-top: -8px;
 }
 
 @keyframes hero-scroll-bounce {
   0%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(6px);
+    transform: translateY(6px);
   }
 }
 
@@ -2413,13 +2460,10 @@ section {
     min-height: calc(100vh - 0px);
   }
 
-  .hero--about {
+  .hero--about,
+  .hero--contact {
     padding-top: 130px;
     padding-bottom: 60px;
-  }
-
-  .hero__scroll {
-    bottom: 24px;
   }
 
   .hero__scroll-arrow {
