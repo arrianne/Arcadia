@@ -1398,10 +1398,75 @@ section {
   inset: 0;
   z-index: 0;
   background-color: #000;
-  background-image: url("images/coverage-map.png");
+  background-image: url("images/service-area-nomarkers2.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.section--coverage .coverage-map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.section--coverage .coverage-map-marker {
+  display: block;
+  width: 200px;
+  height: 200px;
+  opacity: 0.95;
+}
+
+.section--coverage .coverage-map-pin::after {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 58, 237, 0.9);
+  opacity: 0;
+  transform: scale(0.6);
+  animation: coverage-marker-ripple 2.6s ease-out infinite;
+}
+
+@keyframes coverage-marker-ripple {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--coverage .coverage-map-pin::after {
+    animation: none;
+  }
+}
+
+/* Tweak these until each marker sits on the right spot. */
+.section--coverage .coverage-map-pin--brisbane {
+  left: 78%;
+  top: 50%;
+}
+
+.section--coverage .coverage-map-pin--gold-coast {
+  left: 82%;
+  top: 74%;
+}
+
+.section--coverage .coverage-map-pin--sunshine-coast {
+  left: 75%;
+  top: 18%;
+}
+.section--coverage .coverage-map-pin--Toowoomba {
+  left: 60%;
+  top: 55%;
 }
 
 .section--coverage .coverage-section__content {
@@ -2623,6 +2688,28 @@ section {
   .chip {
     padding: 8px 12px;
     font-size: 12px;
+  }
+
+  /* Coverage map (areas page): show the whole map + smaller markers */
+  .section--coverage {
+    min-height: auto;
+    padding: 48px 0;
+  }
+
+  .section--coverage .coverage-map-wrapper {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    aspect-ratio: 1145 / 635;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .section--coverage .coverage-map-marker {
+    width: clamp(70px, 18vw, 120px);
+    height: auto;
   }
 
   /* Footer */
