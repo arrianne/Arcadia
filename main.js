@@ -55,6 +55,66 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Stats count-up: animate numbers when section is in view
+  const statsWrap = document.querySelector(".our-story__stats-wrap");
+  const statNumEls = document.querySelectorAll(".our-story__stat-num");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (statsWrap && statNumEls.length && !prefersReducedMotion) {
+    function parseStatValue(text) {
+      const match = String(text).trim().match(/^(\d+)(.*)$/);
+      if (!match) return { value: 0, suffix: "" };
+      return { value: parseInt(match[1], 10), suffix: match[2] };
+    }
+
+    function easeOutQuart(t) {
+      return 1 - Math.pow(1 - t, 4);
+    }
+
+    function startValueFor(target) {
+      if (target <= 100) return Math.max(0, Math.floor(target * 0.75));
+      return Math.floor(target * 0.85);
+    }
+
+    function animateValue(el, targetValue, suffix, durationMs) {
+      const start = performance.now();
+      const startVal = startValueFor(targetValue);
+      let lastShown = -1;
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / durationMs, 1);
+        const eased = easeOutQuart(progress);
+        const current = Math.round(startVal + (targetValue - startVal) * eased);
+        if (current !== lastShown) {
+          lastShown = current;
+          el.textContent = current + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    let hasAnimated = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry?.isIntersecting || hasAnimated) return;
+        hasAnimated = true;
+        const duration = 2800;
+        statNumEls.forEach((el) => {
+          const { value, suffix } = parseStatValue(el.textContent);
+          const startVal = startValueFor(value);
+          el.textContent = startVal + suffix;
+          animateValue(el, value, suffix, duration);
+        });
+      },
+      { threshold: 0.25, rootMargin: "0px" }
+    );
+    observer.observe(statsWrap);
+  }
+
   // FAQ accordion: optional single-open behaviour (close others when one opens)
   const accordion = document.querySelector("[data-accordion]");
   if (accordion) {

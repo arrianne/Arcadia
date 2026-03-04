@@ -1938,11 +1938,17 @@ section {
   border-radius: 2px;
 }
 
-/* Title on its own row, then intro below (flexbox) */
+/* Title and intro in a row on desktop */
 .our-story__top {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.our-story__heading {
+  flex: 0 1 38%;
+  min-width: 0;
 }
 
 .our-story__title {
@@ -1955,6 +1961,8 @@ section {
 }
 
 .our-story__intro {
+  flex: 1 1 62%;
+  min-width: 0;
   max-width: 56ch;
 }
 
@@ -1968,13 +1976,16 @@ section {
   margin-bottom: 0;
 }
 
+/* Team section: own section with light background */
+.our-story__team-section .container {
+  max-width: var(--container-max);
+}
+
 /* Two bio cards (white, grey border) */
 .our-story__team {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 
 .our-story__card {
@@ -1985,11 +1996,15 @@ section {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.our-story__bio h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-dark);
+/* Name: larger, gradient blue–purple text */
+.our-story__name {
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
   margin: 0 0 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Job description as a clear label, distinct from body text */
@@ -2015,10 +2030,10 @@ section {
 }
 
 /* Stats row with blue gradient numbers */
-/* Full-width stats section: light grey background, fills width and height */
+/* Full-width stats section: white background to differentiate from team (light) above */
 .our-story__stats-wrap {
   width: 100%;
-  background: var(--bg-light);
+  background: var(--bg-white);
   padding: 80px 0;
   min-height: 200px;
   display: flex;
@@ -2028,12 +2043,13 @@ section {
 .our-story__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 32px;
   width: 100%;
 }
 
 .our-story__stat {
   text-align: center;
+  padding: 28px 24px;
 }
 
 .our-story__stat-num {
@@ -2667,6 +2683,20 @@ section {
   .two-col {
     flex-direction: column;
     gap: 16px;
+  }
+
+  .our-story__top {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .our-story__heading {
+    flex: none;
+  }
+
+  .our-story__intro {
+    flex: none;
+    max-width: none;
   }
 
   .our-story__team {
