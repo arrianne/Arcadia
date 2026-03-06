@@ -74,30 +74,20 @@
       <!-- ===== PAGE INTRO ===== -->
       <section class="hero">
         <div class="container">
-          <p class="eyebrow">Strata • Property managers • Owners</p>
           <h1><span class="accent">Services</span></h1>
           <p class="lead">
             Practical building inspections with clear written reports and photos
             — focused on condition, compliance, and helping you make confident
             decisions.
           </p>
-
-          <div class="cta-row">
-            <a class="btn" href="tel:+61438 716 601">Call 0438 716 601</a>
-            <a
-              class="btn btn--outline"
-              href="mailto:info@arcadiabuildingreports.com.au"
-              >Email us</a
-            >
-          </div>
         </div>
       </section>
 
       <!-- ===== SERVICES GRID (ANCHOR LINKS) ===== -->
       <section class="section section--white">
         <div class="container">
-          <div class="grid">
-            <a href="#safety-audit" class="tile tile--light">
+          <div class="grid grid--service-tiles">
+            <a href="#safety-audit" class="tile tile--bg tile--bg-safety-audit">
               <h3>Safety audit</h3>
               <p>
                 Common-area safety checks with practical risk notes and
@@ -105,7 +95,10 @@
               </p>
             </a>
 
-            <a href="#maintenance-report" class="tile tile--light">
+            <a
+              href="#maintenance-report"
+              class="tile tile--bg tile--bg-maintenance"
+            >
               <h3>Maintenance report</h3>
               <p>
                 A clear overview of building condition with practical
@@ -113,7 +106,7 @@
               </p>
             </a>
 
-            <a href="#roof-report" class="tile tile--light">
+            <a href="#roof-report" class="tile tile--bg tile--bg-roof">
               <h3>Roof report</h3>
               <p>
                 Visual assessment of roof condition, drainage and water ingress
@@ -121,7 +114,7 @@
               </p>
             </a>
 
-            <a href="#chapter-3-part-5" class="tile tile--light">
+            <a href="#chapter-3-part-5" class="tile tile--bg tile--bg-chapter3">
               <h3>Chapter 3 part 5 report</h3>
               <p>
                 Compliance reporting for fire safety and essential safety
@@ -129,7 +122,10 @@
               </p>
             </a>
 
-            <a href="#sinking-fund-forecasting" class="tile tile--light">
+            <a
+              href="#sinking-fund-forecasting"
+              class="tile tile--bg tile--bg-sinking-fund"
+            >
               <h3>Sinking fund forecasting</h3>
               <p>
                 Inspection inputs to support long-term planning and capital
@@ -137,7 +133,10 @@
               </p>
             </a>
 
-            <a href="#insurance-valuations" class="tile tile--light">
+            <a
+              href="#insurance-valuations"
+              class="tile tile--bg tile--bg-insurance"
+            >
               <h3>Insurance valuations</h3>
               <p>
                 Building valuations to support adequate insurance cover for
@@ -145,7 +144,7 @@
               </p>
             </a>
 
-            <a href="#pool-inspection" class="tile tile--light">
+            <a href="#pool-inspection" class="tile tile--bg tile--bg-pool">
               <h3>Pool inspection and certification</h3>
               <p>
                 Pool and spa safety inspections with certification for
@@ -741,7 +740,7 @@
             <div class="cta-row">
               <a
                 class="btn"
-                href="mailto:info@arcadiabuildingreports.com.au?subject=Quote%20request"
+                href="mailto:admin@arcadiabuildingreports.com.au?subject=Quote%20request"
                 >Send us an email</a
               >
               <a class="btn btn--outline" href="contact.html">Contact page</a>
@@ -754,12 +753,28 @@
     <!-- ===== Footer ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
-        <p class="small">
-          <a href="services.html">Services</a> ·
-          <a href="areas.html">Areas</a> · <a href="faq.html">FAQs</a> ·
-          <a href="contact.html">Contact</a>
-        </p>
+        <div class="footer__main">
+          <div class="footer__brand">
+            <p class="footer__name">Arcadia Building Reports</p>
+            <p class="footer__tagline small">Building & strata reports across Brisbane and South East Queensland.</p>
+          </div>
+          <div class="footer__contact">
+            <p class="footer__heading small">Contact</p>
+            <a href="tel:+61438716601" class="footer__link small">0438 716 601</a>
+            <a href="mailto:admin@arcadiabuildingreports.com.au" class="footer__link small">admin@arcadiabuildingreports.com.au</a>
+          </div>
+          <nav class="footer__nav" aria-label="Footer">
+            <p class="footer__heading small">Quick links</p>
+            <a href="services.html">Services</a>
+            <a href="areas.html">Areas</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
+        </div>
       </div>
     </footer>
 

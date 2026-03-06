@@ -243,10 +243,10 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <path
-                    d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 2v4l3 3"
-                  />
-                  <circle cx="12" cy="12" r="2" />
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="9" cy="10" r="1.5" fill="currentColor" />
+                  <circle cx="15" cy="10" r="1.5" fill="currentColor" />
+                  <path d="M8 14.5 Q12 18 16 14.5" />
                 </svg>
               </span>
               <h3 class="our-story__why-card-title">Friendly team</h3>
@@ -368,7 +368,10 @@
           </div>
           <ol class="how-it-works__steps">
             <li class="how-it-works__step">
-              <span class="how-it-works__num">01</span>
+              <span
+                class="service-detail__line-accent"
+                aria-hidden="true"
+              ></span>
               <div class="how-it-works__content">
                 <h3>Plain language</h3>
                 <p>
@@ -379,7 +382,10 @@
               </div>
             </li>
             <li class="how-it-works__step">
-              <span class="how-it-works__num">02</span>
+              <span
+                class="service-detail__line-accent"
+                aria-hidden="true"
+              ></span>
               <div class="how-it-works__content">
                 <h3>Photos and evidence</h3>
                 <p>
@@ -390,7 +396,10 @@
               </div>
             </li>
             <li class="how-it-works__step">
-              <span class="how-it-works__num">03</span>
+              <span
+                class="service-detail__line-accent"
+                aria-hidden="true"
+              ></span>
               <div class="how-it-works__content">
                 <h3>Action-oriented</h3>
                 <p>
@@ -496,12 +505,28 @@
     <!-- ===== Footer ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
-        <p class="small">
-          <a href="services.html">Services</a> ·
-          <a href="areas.html">Areas</a> · <a href="faq.html">FAQs</a> ·
-          <a href="contact.html">Contact</a>
-        </p>
+        <div class="footer__main">
+          <div class="footer__brand">
+            <p class="footer__name">Arcadia Building Reports</p>
+            <p class="footer__tagline small">Building & strata reports across Brisbane and South East Queensland.</p>
+          </div>
+          <div class="footer__contact">
+            <p class="footer__heading small">Contact</p>
+            <a href="tel:+61438716601" class="footer__link small">0438 716 601</a>
+            <a href="mailto:admin@arcadiabuildingreports.com.au" class="footer__link small">admin@arcadiabuildingreports.com.au</a>
+          </div>
+          <nav class="footer__nav" aria-label="Footer">
+            <p class="footer__heading small">Quick links</p>
+            <a href="services.html">Services</a>
+            <a href="areas.html">Areas</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
+        </div>
       </div>
     </footer>
     <script src="main.js"></script>

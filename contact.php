@@ -1,11 +1,11 @@
 <?php
 /**
  * Contact form handler for Arcadia Building Reports
- * Sends form submissions to info@arcadiabuildingreports.com.au via cPanel mail
+ * Sends form submissions to admin@arcadiabuildingreports.com.au via cPanel mail
  */
 
 // Configuration – change this to your receiving email address
-$to_email = 'info@arcadiabuildingreports.com.au';
+$to_email = 'admin@arcadiabuildingreports.com.au';
 
 // Redirect back to contact page
 $redirect_url = 'contact.html';
@@ -82,7 +82,7 @@ $body .= "Message:\n" . $message . "\n";
 // Email headers
 $headers = [];
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
-$headers[] = 'From: Arcadia Contact <info@arcadiabuildingreports.com.au>';
+$headers[] = 'From: Arcadia Contact <admin@arcadiabuildingreports.com.au>';
 $headers[] = 'Reply-To: ' . $name . ' <' . $email . '>';
 $headers[] = 'X-Mailer: PHP/' . phpversion();
 

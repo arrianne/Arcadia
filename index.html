@@ -130,7 +130,7 @@
               <a class="btn" href="tel:+61700000000">Call 0438 716 601</a>
               <a
                 class="btn btn--outline"
-                href="mailto:info@arcadiabuildingreports.com.au"
+                href="mailto:admin@arcadiabuildingreports.com.au"
                 >Email for a quote</a
               >
             </div>
@@ -271,6 +271,22 @@
         </div>
       </section>
 
+      <!-- ===== AREAS (map background) ===== -->
+      <section class="section section--areas-home">
+        <div class="areas-home__map" aria-hidden="true"></div>
+        <div class="container areas-home__content">
+          <div class="areas-home__card">
+            <div class="section-head">
+              <h2>Areas we service</h2>
+              <p>Brisbane and South East Queensland.</p>
+            </div>
+            <div class="section-head__cta">
+              <a class="btn btn--outline" href="areas.html">View all areas</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== TEAM BANNER (full-width image + overlay) ===== -->
       <section class="team-banner">
         <div class="team-banner__bg" aria-hidden="true"></div>
@@ -295,29 +311,9 @@
         </div>
       </section>
 
-      <!-- ===== AREAS (WHITE) ===== -->
-      <section class="section section--white">
-        <div class="container">
-          <div class="section-head">
-            <h2>Areas we service</h2>
-            <p>Brisbane and South East Queensland.</p>
-          </div>
-
-          <div class="chips">
-            <span class="chip chip--light">Brisbane</span>
-            <span class="chip chip--light">Gold Coast</span>
-            <span class="chip chip--light">Sunshine Coast</span>
-            <span class="chip chip--light">Redlands</span>
-            <span class="chip chip--light">Logan</span>
-            <span class="chip chip--light">Moreton Bay</span>
-            <span class="chip chip--light">Toowoomba</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== TESTIMONIALS (dark section) ===== -->
+      <!-- ===== TESTIMONIALS ===== -->
       <section
-        class="section section--dark testimonials"
+        class="section section--white testimonials"
         aria-label="Client testimonials"
       >
         <div class="container testimonials__inner">
@@ -433,12 +429,28 @@
     <!-- ===== Footer ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
-        <p class="small">
-          <a href="services.html">Services</a> ·
-          <a href="areas.html">Areas</a> · <a href="faq.html">FAQs</a> ·
-          <a href="contact.html">Contact</a>
-        </p>
+        <div class="footer__main">
+          <div class="footer__brand">
+            <p class="footer__name">Arcadia Building Reports</p>
+            <p class="footer__tagline small">Building & strata reports across Brisbane and South East Queensland.</p>
+          </div>
+          <div class="footer__contact">
+            <p class="footer__heading small">Contact</p>
+            <a href="tel:+61438716601" class="footer__link small">0438 716 601</a>
+            <a href="mailto:admin@arcadiabuildingreports.com.au" class="footer__link small">admin@arcadiabuildingreports.com.au</a>
+          </div>
+          <nav class="footer__nav" aria-label="Footer">
+            <p class="footer__heading small">Quick links</p>
+            <a href="services.html">Services</a>
+            <a href="areas.html">Areas</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQs</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p class="small">© <span id="year"></span> Arcadia Building Reports</p>
+        </div>
       </div>
     </footer>
     <script src="main.js"></script>

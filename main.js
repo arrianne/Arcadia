@@ -58,11 +58,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Stats count-up: animate numbers when section is in view
   const statsWrap = document.querySelector(".our-story__stats-wrap");
   const statNumEls = document.querySelectorAll(".our-story__stat-num");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   if (statsWrap && statNumEls.length && !prefersReducedMotion) {
     function parseStatValue(text) {
-      const match = String(text).trim().match(/^(\d+)(.*)$/);
+      const match = String(text)
+        .trim()
+        .match(/^(\d+)(.*)$/);
       if (!match) return { value: 0, suffix: "" };
       return { value: parseInt(match[1], 10), suffix: match[2] };
     }
@@ -73,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startValueFor(target) {
       if (target <= 100) return Math.max(0, Math.floor(target * 0.75));
-      return Math.floor(target * 0.85);
+      return Math.floor(target * 0.95);
     }
 
     function animateValue(el, targetValue, suffix, durationMs) {
@@ -102,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const entry = entries[0];
         if (!entry?.isIntersecting || hasAnimated) return;
         hasAnimated = true;
-        const duration = 2800;
+        const duration = 1000;
         statNumEls.forEach((el) => {
           const { value, suffix } = parseStatValue(el.textContent);
           const startVal = startValueFor(value);
@@ -110,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
           animateValue(el, value, suffix, duration);
         });
       },
-      { threshold: 0.25, rootMargin: "0px" }
+      { threshold: 0.25, rootMargin: "0px" },
     );
     observer.observe(statsWrap);
   }
@@ -142,12 +146,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const total = slides.length;
     const autoplayInterval = 7000;
     let autoplayTimer = null;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion && list) list.classList.add("testimonials__list--no-motion");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion && list)
+      list.classList.add("testimonials__list--no-motion");
 
     function setAriaHidden() {
       slides.forEach((slide, i) => {
-        slide.setAttribute("aria-hidden", i !== currentIndex ? "true" : "false");
+        slide.setAttribute(
+          "aria-hidden",
+          i !== currentIndex ? "true" : "false",
+        );
       });
     }
 
