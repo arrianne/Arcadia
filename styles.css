@@ -836,13 +836,13 @@ section {
   color: transparent;
 }
 
-/* Service tiles grid — 4 columns on desktop to match reference layout */
+/* Service tiles grid — 3 columns on desktop (2 rows of 3) */
 .grid--service-tiles {
   gap: 20px;
 }
 
 .grid--service-tiles .tile--bg {
-  flex: 1 1 calc(25% - 15px);
+  flex: 1 1 calc(33.333% - 14px);
 }
 
 /* Tiles with image background (services page) — reference style, rectangular */
@@ -929,10 +929,6 @@ section {
 .tile--bg-insurance {
   background-image: url("images/insurance-valuations.jpg");
 }
-.tile--bg-pool {
-  background-image: url("images/pool-inspection.jpg");
-}
-
 /* ===== How it works (process) ===== */
 
 .how-it-works__inner {
@@ -2215,6 +2211,11 @@ section {
   max-width: var(--container-max);
 }
 
+/* Team section eyebrow */
+.our-story__team-eyebrow {
+  margin-bottom: 24px;
+}
+
 /* Two bio cards (white, grey border) */
 .our-story__team {
   display: grid;
@@ -2226,11 +2227,41 @@ section {
   background: var(--bg-white);
   border: 1px solid var(--line-dark);
   border-radius: var(--radius);
-  padding: 28px 32px;
+  overflow: hidden;
+  padding: 0;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Name: larger, gradient blue–purple text */
+/* Headshot area: image + dark overlay + name on top */
+.our-story__headshot {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.our-story__headshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.our-story__headshot-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* Name when not on photo (fallback) */
 .our-story__name {
   font-size: clamp(22px, 2.5vw, 28px);
   font-weight: 800;
@@ -2239,6 +2270,35 @@ section {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Name on photo: solid white so it's readable on the overlay */
+.our-story__name--on-photo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 24px 28px;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    transparent 100%
+  );
+  background-clip: unset;
+  -webkit-background-clip: unset;
+}
+
+/* Bio body: separator line + role + paragraphs */
+.our-story__bio-body {
+  padding: 28px 32px;
+  border-top: 3px solid var(--accent);
 }
 
 /* Job description as a clear label, distinct from body text */
@@ -3034,8 +3094,16 @@ section {
     font-size: clamp(28px, 8vw, 40px);
   }
 
-  .our-story__card {
+  .our-story__bio-body {
     padding: 20px 22px;
+  }
+
+  .our-story__headshot {
+    min-height: 220px;
+  }
+
+  .our-story__name--on-photo {
+    padding: 18px 20px;
   }
 
   .our-story__why-inner {
