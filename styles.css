@@ -343,7 +343,7 @@ section {
   padding-top: 174px; /* 84px (header) + 90px (original top padding) */
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 1), rgba(32, 14, 105, 0.5)),
-    url("images/building.jpg");
+    url("images/strata-building2.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -579,7 +579,8 @@ section {
   box-sizing: border-box;
   border-style: solid;
   border-width: 0 2px 2px 0;
-  border-image: linear-gradient(135deg, var(--accent), var(--accent2)) 0 1 1 0 / 0 2px 2px 0;
+  border-image: linear-gradient(135deg, var(--accent), var(--accent2)) 0 1 1 0 /
+    0 2px 2px 0;
   transform: rotate(45deg);
 }
 
@@ -2285,12 +2286,10 @@ section {
   letter-spacing: -0.02em;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.5) 0%,
-    transparent 100%
-  );
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
   background-clip: unset;
   -webkit-background-clip: unset;
 }
