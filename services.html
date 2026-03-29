@@ -106,18 +106,25 @@
     <main>
       <!-- ===== PAGE INTRO ===== -->
       <section class="hero">
-        <div class="container">
+        <div class="container hero__content">
           <h1><span class="accent">Services</span></h1>
           <p class="lead">
             Practical building inspections with clear written reports and photos
             — focused on condition, compliance, and helping you make confident
             decisions.
           </p>
+          <a
+            href="#services-content"
+            class="hero__scroll"
+            aria-label="Scroll to content"
+          >
+            <span class="hero__scroll-arrow"></span>
+          </a>
         </div>
       </section>
 
       <!-- ===== SERVICES GRID (ANCHOR LINKS) ===== -->
-      <section class="section section--white">
+      <section id="services-content" class="section section--white">
         <div class="container">
           <div class="grid grid--service-tiles">
             <a href="#safety-audit" class="tile tile--bg tile--bg-safety-audit">

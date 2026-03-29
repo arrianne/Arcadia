@@ -340,6 +340,11 @@ section {
   padding: 90px 0 40px;
 }
 
+/* Match About / Contact hero foot room (scroll affordance); homepage stays on default .hero padding */
+.hero:not(.hero--full) {
+  padding-bottom: 80px;
+}
+
 /* Pull hero behind the header so the hero background shows through the transparent nav */
 .hero--full {
   position: relative;
@@ -476,7 +481,6 @@ section {
 .hero--about {
   margin-top: -84px;
   padding-top: 174px;
-  padding-bottom: 80px;
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -509,15 +513,10 @@ section {
   text-align: left;
 }
 
-.hero--about .hero__lead {
-  color: rgba(255, 255, 255, 0.9);
-}
-
 /* Contact page hero – woman-on-phone image, same overlay as about */
 .hero--contact {
   margin-top: -84px;
   padding-top: 174px;
-  padding-bottom: 80px;
   min-height: 50vh;
   display: flex;
   flex-direction: column;
@@ -550,6 +549,13 @@ section {
   text-align: left;
 }
 
+/* Shared layout for page heroes with scroll affordance (about, contact, inner pages) */
+.hero:not(.hero--full) .hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .hero__scroll {
   display: inline-flex;
   flex-direction: column;
@@ -560,6 +566,12 @@ section {
   opacity: 0.9;
   text-decoration: none;
   animation: hero-scroll-bounce 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll {
+    animation: none;
+  }
 }
 
 .hero__scroll:hover {
@@ -630,6 +642,11 @@ section {
   font-size: 17px;
   color: var(--muted-light);
   max-width: 62ch;
+}
+
+/* Interior page heroes (not homepage): brighter body copy on dark backgrounds */
+.hero:not(.hero--full) .lead {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .cta-row {
@@ -2249,8 +2266,8 @@ a.chip:focus-visible {
 /* Headshot area: image + dark overlay + name on top */
 .our-story__headshot {
   position: relative;
-  aspect-ratio: 4 / 5;
-  min-height: 280px;
+  aspect-ratio: 1 / 1;
+  min-height: 200px;
   overflow: hidden;
 }
 
@@ -2271,6 +2288,23 @@ a.chip:focus-visible {
     rgba(0, 0, 0, 0.2) 100%
   );
   pointer-events: none;
+  transition: background 0.35s ease;
+}
+
+.our-story__card:hover .our-story__headshot-overlay,
+.our-story__card:focus-within .our-story__headshot-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.2) 45%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .our-story__headshot-overlay {
+    transition: none;
+  }
 }
 
 /* Name when not on photo (fallback) */
@@ -2303,6 +2337,18 @@ a.chip:focus-visible {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
   background-clip: unset;
   -webkit-background-clip: unset;
+  transition: background 0.35s ease;
+}
+
+.our-story__card:hover .our-story__name--on-photo,
+.our-story__card:focus-within .our-story__name--on-photo {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.28) 0%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .our-story__name--on-photo {
+    transition: none;
+  }
 }
 
 /* Bio body: separator line + role + paragraphs */
@@ -2657,6 +2703,10 @@ a.chip:focus-visible {
     padding: 70px 0 30px;
   }
 
+  .hero:not(.hero--full) {
+    padding-bottom: 80px;
+  }
+
   .hero--full {
     padding-top: 154px;
   }
@@ -2841,6 +2891,10 @@ a.chip:focus-visible {
     padding: 60px 0 30px;
   }
 
+  .hero:not(.hero--full) {
+    padding-bottom: 60px;
+  }
+
   /* Simple page heroes (Services, Areas, FAQs): same pull as hero--full so no body gap */
   .hero:not(.hero--full):not(.hero--about):not(.hero--contact) {
     margin-top: calc(-70px - env(safe-area-inset-top, 0px));
@@ -2864,7 +2918,6 @@ a.chip:focus-visible {
   .hero--contact {
     margin-top: calc(-70px - env(safe-area-inset-top, 0px));
     padding-top: calc(130px + env(safe-area-inset-top, 0px));
-    padding-bottom: 60px;
     min-height: auto;
   }
 
@@ -3125,7 +3178,7 @@ a.chip:focus-visible {
   }
 
   .our-story__headshot {
-    min-height: 220px;
+    min-height: 180px;
   }
 
   .our-story__name--on-photo {
