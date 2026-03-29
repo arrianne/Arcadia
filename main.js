@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sessionStorage.getItem("heroIntroSeen")) {
       hero.classList.add("hero--skip-intro");
     } else {
-      const introDuration = 3600 + 800; // copy delay + fade duration (ms)
+      const introDuration = 2400 + 650; // copy delay + fade (ms), match styles.css .hero--full .hero-copy
       window.setTimeout(() => {
         sessionStorage.setItem("heroIntroSeen", "1");
       }, introDuration);

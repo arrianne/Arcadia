@@ -1,0 +1,5 @@
+# https://www.arcadiabuildingreports.com.au/
+User-agent: *
+Allow: /
+
+Sitemap: https://www.arcadiabuildingreports.com.au/sitemap.xml
