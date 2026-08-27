@@ -2718,6 +2718,7 @@ a.chip:focus-visible {
 
 .legal {
   max-width: 72ch;
+  counter-reset: section;
 }
 
 .legal__updated {
@@ -2726,22 +2727,20 @@ a.chip:focus-visible {
   color: var(--muted-dark);
 }
 
-.legal h2 {
-  margin: 2.75rem 0 1rem;
+.legal-block {
+  counter-increment: section;
+  counter-reset: clause;
+  padding: 10px 0;
+}
+
+.legal-block h2 {
+  margin: 0 0 1rem;
   font-size: 28px;
   color: var(--text-dark);
 }
 
-.legal h2:first-of-type {
+.legal-block:first-of-type h2 {
   margin-top: 0;
-}
-
-.legal h3 {
-  margin: 2rem 0 0.75rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-dark);
 }
 
 .legal p {
@@ -2750,47 +2749,69 @@ a.chip:focus-visible {
   line-height: 1.65;
 }
 
-.legal__defs {
-  margin: 0 0 8px;
+.legal-clauses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.legal dt {
-  margin: 1.35rem 0 0.35rem;
+.legal-clauses > li {
+  position: relative;
+  margin: 0 0 1.1rem;
+  padding-left: 3.5rem;
+  color: var(--muted-dark);
+  line-height: 1.65;
+  counter-increment: clause;
+}
+
+.legal-clauses > li::before {
+  content: counter(section) "." counter(clause);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.legal-clauses > li > p {
+  margin: 0 0 10px;
+}
+
+.legal-clauses > li > p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-clauses strong {
   font-weight: 600;
   color: var(--text-dark);
 }
 
-.legal dt:first-child {
-  margin-top: 0;
+.legal-sub {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  counter-reset: sub;
 }
 
-.legal dd {
-  margin: 0;
-  color: var(--muted-dark);
-  line-height: 1.65;
-}
-
-.legal dd p {
-  margin: 0 0 10px;
-}
-
-.legal ul {
-  margin: 0 0 16px;
-  padding-left: 1.25em;
-}
-
-.legal li {
+.legal-sub > li {
+  position: relative;
   margin: 0 0 8px;
+  padding-left: 1.85rem;
   color: var(--muted-dark);
   line-height: 1.65;
+  counter-increment: sub;
 }
 
-.legal dd ul {
-  margin: 0;
+.legal-sub > li::before {
+  content: "(" counter(sub, lower-alpha) ")";
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
-.legal dd ul:last-child,
-.legal dd p:last-child {
+.legal-sub > li:last-child {
   margin-bottom: 0;
 }
 
@@ -3381,8 +3402,8 @@ a.chip:focus-visible {
     gap: 10px;
   }
 
-  .legal h3 {
-    font-size: 1.05rem;
+  .legal-clauses > li {
+    padding-left: 3rem;
   }
 
   /* Typography adjustments */
